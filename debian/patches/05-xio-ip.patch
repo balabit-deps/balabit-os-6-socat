@@ -1,0 +1,12 @@
+diff -Naur socat-1.7.3.0.orig/xio-ip.c socat-1.7.3.0/xio-ip.c
+--- a/xio-ip.c.orig	2015-01-24 12:15:22.000000000 +0200
++++ b/xio-ip.c		2015-10-29 12:57:43.550854706 +0200
+@@ -239,7 +239,7 @@
+ 
+       if ((error_num = Getaddrinfo(node, service, &hints, &res)) != 0) {
+ 	 Error7("getaddrinfo(\"%s\", \"%s\", {%d,%d,%d,%d}, {}): %s",
+-		node, service, hints.ai_flags, hints.ai_family,
++		node, service?service:"NULL", hints.ai_flags, hints.ai_family,
+ 		hints.ai_socktype, hints.ai_protocol,
+ 		(error_num == EAI_SYSTEM)?
+ 		strerror(errno):gai_strerror(error_num));
